@@ -1,13 +1,13 @@
 [project]
-name = "surgical-preview-paper-scripts"
+name = "localize-dont-beautify-scripts"
 version = "0.1.0"
 description = "Analysis scripts that generate the paper's tables and figures from local run data"
 requires-python = ">=3.12"
 dependencies = [
-    "pandas>=2.2",
-    "matplotlib>=3.9",
-    "pillow>=10",
-    "pyyaml>=6",
+    "pandas>=3.0",
+    "matplotlib>=3.11",
+    "pillow>=12",
+    "pyyaml>=6.0.3",
 ]
 
 [tool.uv]
