@@ -14,7 +14,8 @@ blepharoptosis~\cite{blepharoptosis2022poap,huang2024ptosisdiffusion}, and
 biomechanics-driven craniofacial simulation~\cite{fang2022acmtnet}; a recent
 systematic review surveys the area~\cite{stephanian2024fpsamreview}. Closest to us,
 Envisage~\cite{agarwal2026envisage} combines a local FLUX-based inpainter with
-MediaPipe masks, hard compositing, and a mask-decomposed score for rhinoplasty. We
+MediaPipe masks, hard compositing, and a mask-decomposed score built on masked
+LPIPS~\cite{zhang2018lpips} for rhinoplasty. We
 differ on each axis that defines our question: we benchmark six hosted black-box
 APIs rather than one open-weight model, on two procedures rather than one, with
 control itself as the manipulated variable. Lim et
@@ -22,8 +23,9 @@ al.~\cite{lim2023generativecosmetic} prompt text-to-image tools about the same
 procedures but generate generic faces rather than editing a patient's photo.
 
 \textbf{Training-free localized editing.} Methods that confine an edit without
-fine-tuning uniformly reach inside the model: SDEdit, RePaint, and DiffEdit steer
-the sampling loop~\cite{meng2022sdedit,lugmayr2022repaint,couairon2023diffedit},
+fine-tuning uniformly reach inside a diffusion model~\cite{rombach2022ldm}:
+SDEdit, RePaint, and DiffEdit steer the sampling
+loop~\cite{meng2022sdedit,lugmayr2022repaint,couairon2023diffedit},
 Blended (Latent) Diffusion blends masked latents at every denoising
 step~\cite{avrahami2022blended,avrahami2023blendedlatent}, and Prompt-to-Prompt
 and Plug-and-Play inject attention or
