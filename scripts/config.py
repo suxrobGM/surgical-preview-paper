@@ -40,7 +40,6 @@ MODEL_NAMES = {
     "seedream_5_0": "Seedream 5.0",
     "flux_2_pro": "FLUX.2 [pro]",
     "qwen_image_edit_inpaint": "Qwen-Image-Edit (inpaint)",
-    "qwen_image_edit": "Qwen-Image-Edit (local)",
 }
 
 PROCEDURE_NAMES = {

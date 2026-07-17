@@ -3,8 +3,8 @@
 
 \begin{table}[t]
   \centering
-  \caption{Models in the study. Hosted models run behind fal.ai endpoints; cost is
-  the provider's per-image estimate at the pinned date.}
+  \caption{Models in the study. All run behind fal.ai endpoints; cost is the
+  provider's per-image estimate at the pinned date.}
   \label{tab:models}
   \resizebox{\columnwidth}{!}{\input{tables/setup_models}}
 \end{table}
@@ -15,10 +15,9 @@ Google's Nano Banana~Pro and Nano
 Banana~2~\cite{google2025nanobananapro,google2025nanobanana}, ByteDance
 Seedream~5.0~\cite{seedream5_2026,seedream4_2025}, and
 FLUX.2~[pro]~\cite{bfl2025fluxkontext}---plus Qwen-Image-Edit as a hosted
-inpainting endpoint for the masked-inpaint rung~\cite{wu2025qwenimage}. The same
-model is available as open weights for a privacy-sensitive local deployment
-track, which we do not benchmark here. Hosted models are moving targets, so every
-run records its date and the exact endpoint identifier.
+inpainting endpoint for the masked-inpaint rung~\cite{wu2025qwenimage}. Hosted
+models are moving targets, so every run records its date and the exact endpoint
+identifier.
 
 \textbf{Data.} The full pool contains real, licensed before/after photograph
 pairs: 12 frontal deep-plane-facelift inputs (11 with a paired post-operative
