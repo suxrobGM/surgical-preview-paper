@@ -17,6 +17,11 @@ TABLES_DIR = PAPER_ROOT / "tables"
 FIGURES_DIR = PAPER_ROOT / "figures" / "generated"
 DATA_DIR = PAPER_ROOT / "data"
 
+# Runs whose rows are eligible for the paper: the registered full-matrix runs
+# (2026-07-16) plus the chained-procedures probe. Earlier runs were development
+# iterations superseded cell-for-cell by the matrix; None = accept every run.
+CANONICAL_RUN_PREFIXES: list[str] | None = ["20260716-", "20260709-035453"]
+
 # Metric columns carried into the canonical row set.
 METRIC_COLS = [
     "identity_cosine",
@@ -33,6 +38,7 @@ MODEL_NAMES = {
     "nano_banana_pro": "Nano Banana Pro",
     "nano_banana_2": "Nano Banana 2",
     "seedream_5_0": "Seedream 5.0",
+    "flux_2_pro": "FLUX.2 [pro]",
     "qwen_image_edit_inpaint": "Qwen-Image-Edit (inpaint)",
     "qwen_image_edit": "Qwen-Image-Edit (local)",
 }

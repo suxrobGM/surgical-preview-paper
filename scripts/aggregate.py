@@ -15,6 +15,7 @@ import pandas as pd
 import yaml
 
 from config import (
+    CANONICAL_RUN_PREFIXES,
     CONTROL_NAMES,
     DATA_DIR,
     METRIC_COLS,
@@ -30,8 +31,13 @@ from config import (
 def load_runs() -> pd.DataFrame:
     frames = []
     for csv in sorted(RUNS_DIR.glob("*/results.csv")):
+        run_id = csv.parent.name
+        if CANONICAL_RUN_PREFIXES is not None and not any(
+            run_id.startswith(p) for p in CANONICAL_RUN_PREFIXES
+        ):
+            continue
         df = pd.read_csv(csv)
-        df["run_id"] = csv.parent.name
+        df["run_id"] = run_id
         frames.append(df)
     if not frames:
         sys.exit(f"No results.csv found under {RUNS_DIR}")
@@ -147,6 +153,15 @@ def write_numbers(df: pd.DataFrame, n_runs_total: int, n_runs_scored: int) -> No
     out += m("MedIdentityPromptOnly", fmt(prom.identity_cosine.median()))
     out += m("IdentityMinAll", fmt(df.identity_cosine.min()))
     out += m("IdentityMaxAll", fmt(df.identity_cosine.max()))
+    below = df[df.identity_cosine < 0.6]
+    out += m("NumBelowFloor", len(below))
+    out += m("NumBelowFloorFlux", len(below[below.model == "flux_2_pro"]))
+    flux_po = df[(df.model == "flux_2_pro") & (df.control == "prompt_only")]
+    out += m("MedIdentityFluxPromptOnly", fmt(flux_po.identity_cosine.median()))
+    out += m("MedTgtFluxPromptOnly", fmt(flux_po.change_target.median(), 1))
+    nb = df[df.model.isin(["nano_banana_pro", "nano_banana_2"])]
+    out += m("MedIdentityNanoBanana", fmt(nb.identity_cosine.median()))
+    out += m("MedTgtNanoBanana", fmt(nb.change_target.median(), 1))
     out += m("MedLocInpaint", fmt(inp.change_localization.median()))
     out += m("LocInpaintMin", fmt(inp.change_localization.min()))
     out += m("LocInpaintMax", fmt(inp.change_localization.max()))
@@ -157,6 +172,15 @@ def write_numbers(df: pd.DataFrame, n_runs_total: int, n_runs_scored: int) -> No
     out += m("MedOffPromptOnly", fmt(prom.change_offtarget.median(), 2))
     out += m("MedTgtInpaint", fmt(inp.change_target.median(), 1))
     out += m("MedOffInpaint", fmt(inp.change_offtarget.median(), 2))
+    inp_f = inp[inp.procedure == "deep_plane_facelift"]
+    inp_r = inp[inp.procedure == "rhinoplasty"]
+    out += m("InpaintFaceliftLoc", fmt(inp_f.change_localization.median()))
+    out += m("InpaintFaceliftIdentity", fmt(inp_f.identity_cosine.median()))
+    out += m("InpaintFaceliftTgt", fmt(inp_f.change_target.median(), 1))
+    out += m("InpaintRhinoLoc", fmt(inp_r.change_localization.median()))
+    out += m("InpaintRhinoIdentity", fmt(inp_r.identity_cosine.median()))
+    out += m("InpaintRhinoTgt", fmt(inp_r.change_target.median(), 1))
+    out += m("InpaintRhinoOff", fmt(inp_r.change_offtarget.median(), 1))
     out += m("NumChained", len(chained))
     out += m("ChainedIdentityLow", fmt(chained.identity_cosine.min()))
     out += m("ChainedIdentityHigh", fmt(chained.identity_cosine.max()))

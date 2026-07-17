@@ -29,8 +29,8 @@ significance claims at this sample size.
 \subsection{Localization: the ladder works}
 
 Masked compositing drives the localization ratio to a median of
-\MedLocComposite{} (range \LocCompositeMin--\LocCompositeMax) regardless of which
-model produced the edit. The same models under prompt-only control reach only
+\MedLocComposite{} (range \LocCompositeMin--\LocCompositeMax) for all six
+editors. The same models under prompt-only control reach only
 \MedLocPromptOnly{} (\LocPromptOnlyMin--\LocPromptOnlyMax): roughly half of the
 measured change lands outside the surgical region, which is the beauty-filter
 signature the metric was built to expose. The off-target numbers make the contrast
@@ -38,27 +38,36 @@ concrete---a median $\Delta E_{\mathrm{off}}$ of \MedOffPromptOnly{} for
 prompt-only edits against \MedOffComposite{} for composited ones---while the
 on-target change stays substantial (median $\Delta E_{\mathrm{tgt}}$
 \MedTgtComposite{} composited vs.\ \MedTgtPromptOnly{} prompt-only). Prompt
-guardrails alone, however carefully worded, did not confine the edit; moving the
-confinement outside the model did.
+guardrails alone, however carefully worded, did not confine any model's edit;
+moving the confinement outside the model did, uniformly.
 
 \subsection{Identity}
 
-Every scored edit clears the $0.6$ identity floor (minimum \IdentityMinAll{},
-maximum \IdentityMaxAll). Following Sec.~\ref{sec:protocol}, the model-level
-number is the prompt-only median of \MedIdentityPromptOnly{}: even without
-compositing, current editors hold identity well above the floor on these faces.
-Composited edits score a median of \MedIdentityComposite{}, but part of that is
-copied pixels, so we do not read the difference as a model improvement.
-Fig.~\ref{fig:boxes} breaks identity out by model; the ordering is consistent with
-each model's editing aggressiveness rather than with output quality.
+With six editors in the matrix the identity floor becomes a discriminating bar
+rather than a formality. \NumBelowFloor{} of \NumScoredEdits{} edits fall below
+$0.6$, and \NumBelowFloorFlux{} of them come from FLUX.2~[pro], which sits at one
+end of an aggressiveness spectrum: it produces the largest anatomical changes in
+the study (median prompt-only $\Delta E_{\mathrm{tgt}}$ \MedTgtFluxPromptOnly)
+and pays for them in identity (prompt-only median
+\MedIdentityFluxPromptOnly{}, single edits as low as \IdentityMinAll{}---at that
+score the output is effectively a different person). The Nano Banana models
+occupy the opposite end, holding identity at \MedIdentityNanoBanana{} while
+making the gentlest edits (median $\Delta E_{\mathrm{tgt}}$ \MedTgtNanoBanana).
+GPT Image~2 and Seedream~5.0 fall between. Following
+Sec.~\ref{sec:protocol}, the model-level number is the prompt-only median of
+\MedIdentityPromptOnly{}; composited edits score \MedIdentityComposite{}, but
+part of that is copied pixels, so we do not read the difference as a model
+improvement. Fig.~\ref{fig:boxes} breaks identity out by model; the ordering
+tracks each model's editing aggressiveness rather than output quality.
 
 \begin{figure*}[t]
   \centering
   \includegraphics[width=0.92\textwidth]{box_localization_identity}
-  \caption{(a) Localization by control rung, models pooled. (b) Identity by model,
-  controls pooled; the dashed line is the acceptance floor. The hosted inpainter's
-  near-perfect identity in (b) reflects under-editing, not superior preservation
-  (see Sec.~\ref{sec:inpaint}).}
+  \caption{(a) Localization by control rung, models pooled. (b) Identity by
+  model, controls pooled; the dashed line is the acceptance floor. FLUX.2's low,
+  wide distribution in (b) is the aggressiveness trade of
+  Sec.~\ref{sec:results}-B; the inpainter's spread reflects its per-procedure
+  split (Sec.~\ref{sec:inpaint}).}
   \label{fig:boxes}
 \end{figure*}
 
@@ -66,17 +75,18 @@ each model's editing aggressiveness rather than with output quality.
 \label{sec:inpaint}
 
 The masked-inpaint rung was expected to dominate: the endpoint receives the mask
-explicitly and should confine the edit for free. Instead it shows the protocol's
-other failure mode. Its identity median of \MedIdentityInpaint{} is the highest in
-the study, but its median target change is only \MedTgtInpaint{}---barely above
-its off-target change of \MedOffInpaint{}, for a localization of just
-\MedLocInpaint{} (\LocInpaintMin--\LocInpaintMax). The edit inside the mask is
-timid, and the returned image differs slightly everywhere, consistent with a
-full-image re-encode by the endpoint. Read jointly, the numbers say the hosted
-inpainter mostly returned the input: exactly the deceptive near-copy the
-did-nothing trap describes. At the tested endpoint, sending the mask to the model
-was worse than ignoring the model's mask support entirely and compositing on the
-client.
+explicitly and should confine the edit for free. Instead it fails differently on
+each procedure. On rhinoplasty it shows the did-nothing trap: identity of
+\InpaintRhinoIdentity{} with a target change of only \InpaintRhinoTgt{}---barely
+above its off-target change of \InpaintRhinoOff{}, for a localization of
+\InpaintRhinoLoc{}. The nose edit is timid while the returned image differs
+slightly everywhere, consistent with a full-image re-encode by the endpoint. On
+the facelift the same endpoint does edit (target change \InpaintFaceliftTgt{},
+localization \InpaintFaceliftLoc{}) but drops identity to
+\InpaintFaceliftIdentity{}, the lowest median of any rung on that procedure, and
+one of its eight requests was rejected by the provider's content checker. Either
+way the conclusion holds: at the tested endpoint, sending the mask to the model
+was worse than ignoring the model's mask support and compositing on the client.
 
 \subsection{Ground-truth sanity check}
 
@@ -112,11 +122,15 @@ feasibility.
 Fig.~\ref{fig:teaser} and Fig.~\ref{fig:grid} show representative edits. The
 facelift examples display the intended tissue repositioning---jawline definition,
 reduced jowls, a cleaner cervicomental angle---while skin texture, lighting, and
-background survive untouched in the composited column. The characteristic failure
-we observed before pose gating was the ghost seam: on profile views the
-frontal-mesh mask landed on the cheek and composited a translucent copy of the
-nose into it. Gating on yaw removed the artifact at the cost of leaving profile
-inputs uncomposited, an honest gap that Sec.~\ref{sec:limitations} counts.
+background survive untouched in the composited column. Three failure modes
+recurred. The ghost seam: before pose gating, profile views put the frontal-mesh
+mask on the cheek and composited a translucent copy of the nose into it; gating
+on yaw removed the artifact at the cost of leaving profile inputs uncomposited.
+The person swap: FLUX.2's strongest edits replace enough of the face to break
+identity, and compositing can only partially repair this because the damage is
+inside the mask. The detector abstention: on one extreme-profile input the identity model finds
+no face at all, so that face's twelve cells contribute ground-truth cosines but
+no identity scores---counted, not hidden, in Table~\ref{tab:main}.
 
 \begin{figure*}[t]
   \centering

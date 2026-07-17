@@ -35,10 +35,10 @@ the model's latents, attention, or sampling loop, and a hosted API exposes none 
 them.
 
 We ask how far client-side control can carry instead, and how to measure whether
-it worked. Concretely, we benchmark four hosted editors (GPT Image~2 at two
-quality tiers, Seedream~5.0, and a Qwen inpainting endpoint) on three facial
-procedures---deep plane facelift, rhinoplasty, blepharoplasty---using real,
-licensed before/after photograph pairs, under a fixed seed and a full
+it worked. Concretely, we benchmark six hosted editors---GPT Image~2 at two
+quality tiers, Nano Banana~Pro and~2, Seedream~5.0, and FLUX.2~[pro], plus a Qwen
+inpainting endpoint for the mask rung---on deep plane facelift and rhinoplasty,
+using real, licensed before/after photograph pairs, under a fixed seed and a full
 experimental matrix. Our contributions:
 
 \begin{itemize}
@@ -54,10 +54,11 @@ experimental matrix. Our contributions:
   against real post-operative photographs and a released surgeon rubric
   (Sec.~\ref{sec:protocol}).
   \item \textbf{Benchmark findings.} Masked compositing pins edit localization at
-  a median of \MedLocComposite{} across models where prompt-only control reaches
-  \MedLocPromptOnly{}; identity stays above the $0.6$ floor everywhere; the
-  mask-accepting endpoint paradoxically under-edits (localization
-  \MedLocInpaint); and two-procedure chains compose in either order
+  a median of \MedLocComposite{} across all six editors where prompt-only control
+  reaches \MedLocPromptOnly{}; the identity floor separates the models, from
+  FLUX.2's aggressive edits that break it to the Nano Banana models' gentle ones
+  that never approach it; the mask-accepting endpoint is the weakest rung, not
+  the strongest; and two-procedure chains compose in either order
   (Sec.~\ref{sec:results}).
 \end{itemize}
 

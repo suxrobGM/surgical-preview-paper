@@ -28,7 +28,10 @@ CONTROL_COLOR = {
 MODEL_MARKER = {
     "gpt_image_2": "o",
     "gpt_image_2_low": "v",
+    "nano_banana_pro": "^",
+    "nano_banana_2": "<",
     "seedream_5_0": "s",
+    "flux_2_pro": "P",
     "qwen_image_edit_inpaint": "D",
 }
 
@@ -77,7 +80,7 @@ def fig_scatter(df: pd.DataFrame) -> None:
     ax.set_xlabel(r"Edit localization  $\Delta E_{\mathrm{tgt}}/(\Delta E_{\mathrm{tgt}}+\Delta E_{\mathrm{off}})$")
     ax.set_ylabel("ArcFace identity cosine")
     ax.set_xlim(-0.02, 1.04)
-    ax.set_ylim(0.4, 1.02)
+    ax.set_ylim(min(0.38, d.identity_cosine.min() - 0.05), 1.02)
     style_axes(ax)
 
     ctrl_handles = [
@@ -85,17 +88,26 @@ def fig_scatter(df: pd.DataFrame) -> None:
                    markerfacecolor=c, markeredgecolor="white", label=CONTROL_NAMES[k])
         for k, c in CONTROL_COLOR.items() if k in set(d.control)
     ]
+    short = {
+        "gpt_image_2": "GPT-2", "gpt_image_2_low": "GPT-2 low",
+        "nano_banana_pro": "NB Pro", "nano_banana_2": "NB 2",
+        "seedream_5_0": "Seedream", "flux_2_pro": "FLUX.2",
+        "qwen_image_edit_inpaint": "Qwen inp.",
+    }
     model_handles = [
         plt.Line2D([], [], marker=m, ls="", markersize=5,
-                   markerfacecolor="#c3c2b7", markeredgecolor=MUTED, label=MODEL_NAMES[k])
+                   markerfacecolor="#c3c2b7", markeredgecolor=MUTED, label=short[k])
         for k, m in MODEL_MARKER.items() if k in set(d.model)
     ]
-    leg1 = ax.legend(handles=ctrl_handles, loc="lower left", bbox_to_anchor=(0.0, 0.0),
-                     fontsize=6.5, title="Control", title_fontsize=7, alignment="left")
-    ax.add_artist(leg1)
-    ax.legend(handles=model_handles, loc="lower left", bbox_to_anchor=(0.38, 0.0),
-              fontsize=6.5, title="Model", title_fontsize=7, alignment="left")
-    fig.tight_layout(pad=0.4)
+    leg1 = fig.legend(handles=ctrl_handles, loc="lower left", bbox_to_anchor=(0.1, 0.11),
+                      ncols=3, fontsize=6.5, title="Control", title_fontsize=7,
+                      alignment="left", columnspacing=0.8, handletextpad=0.3)
+    fig.add_artist(leg1)
+    fig.legend(handles=model_handles, loc="lower left", bbox_to_anchor=(0.1, 0.0), ncols=4,
+               fontsize=6.5, title="Model", title_fontsize=7, alignment="left",
+               columnspacing=0.8, handletextpad=0.3)
+    fig.set_size_inches(COL_W, 3.5)
+    fig.tight_layout(rect=(0, 0.2, 1, 1), pad=0.4)
     fig.savefig(FIGURES_DIR / "scatter_identity_localization.pdf")
     plt.close(fig)
 
