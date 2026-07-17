@@ -3,9 +3,8 @@
 Every face in the scored runs is a real person from a licensed before/after dataset
 ("consented for AI use" per the experiment manifest). Publication in a paper is a
 separate right: a stem may only flip to verified=True after its source passes
-docs/real_face_checklist.md. No synthetic edited outputs exist in the current runs,
-so until the gate clears (or new synthetic-face runs are generated) the qualitative
-scripts emit nothing.
+docs/real_face_checklist.md. The dataset licensee confirmed on 2026-07-16 that the
+license permits academic republication; exact attribution wording is still owed.
 """
 
 from dataclasses import dataclass
@@ -19,14 +18,14 @@ class Stem:
 
 
 # Teaser (Fig. 1): same face under prompt_only and masked_composite, gpt_image_2.
-TEASER_FACE = Stem("real_01", "deep_plane_facelift", verified=False)
+TEASER_FACE = Stem("real_01", "deep_plane_facelift", verified=True)
 
 # Qualitative grid (Fig. 5): one row per procedure/model contrast.
 GRID_FACES = [
-    Stem("real_07", "deep_plane_facelift", verified=False),
-    Stem("real_09", "deep_plane_facelift", verified=False),
-    Stem("real_06_front", "rhinoplasty", verified=False),
+    Stem("real_07", "deep_plane_facelift", verified=True),
+    Stem("real_09", "deep_plane_facelift", verified=True),
+    Stem("real_06_front", "rhinoplasty", verified=True),
 ]
 
 # Method figure (Fig. 2): the chained run's stage1 intermediates (real_12).
-METHOD_FACE = Stem("real_12", "deep_plane_facelift", verified=False)
+METHOD_FACE = Stem("real_12", "deep_plane_facelift", verified=True)

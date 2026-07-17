@@ -42,6 +42,8 @@ PROCEDURE_NAMES = {
     "facelift": "Deep plane facelift",
     "rhinoplasty": "Rhinoplasty",
     "blepharoplasty": "Blepharoplasty",
+    "rhinoplasty_then_deep_plane_facelift": "Chained: rhino.\\ $\\to$ facelift",
+    "deep_plane_facelift_then_rhinoplasty": "Chained: facelift $\\to$ rhino.",
 }
 
 CONTROL_NAMES = {
