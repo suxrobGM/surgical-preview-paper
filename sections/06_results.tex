@@ -53,12 +53,25 @@ and pays for them in identity (prompt-only median
 at which the output is effectively a different person). The Nano Banana models
 occupy the opposite end, holding identity at \MedIdentityNanoBanana{} while
 making the gentlest edits (median $\Delta E_{\mathrm{tgt}}$ \MedTgtNanoBanana).
-GPT Image~2 and Seedream~5.0 fall between. Following
-Sec.~\ref{sec:protocol}, the model-level number is the prompt-only median of
-\MedIdentityPromptOnly{}; composited edits score \MedIdentityComposite{}, but
-part of that is copied pixels, so we do not read the difference as a model
-improvement. Fig.~\ref{fig:boxes} breaks identity out by model; the ordering
-tracks each model's editing aggressiveness rather than output quality.
+GPT Image~2 and Seedream~5.0 fall between. The spectrum is visible to the naked
+eye in Fig.~\ref{fig:modelstrip}, which composites the same face through all six
+editors. Following Sec.~\ref{sec:protocol}, the model-level number is the
+prompt-only median of \MedIdentityPromptOnly{}; composited edits score
+\MedIdentityComposite{}, but part of that is copied pixels, so we do not read
+the difference as a model improvement. Fig.~\ref{fig:boxes} breaks identity out
+by model; the ordering tracks each model's editing aggressiveness rather than
+output quality.
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=0.99\textwidth]{model_strip.png}
+  \caption{One deep-plane-facelift face composited through every editor in the
+  study. The aggressiveness spectrum of Sec.~\ref{sec:results}-B is visible
+  directly: the Nano Banana models barely operate, GPT Image~2 and Seedream
+  reposition the jawline and neck, and FLUX.2 alters enough of the face to
+  strain identity even inside the mask.}
+  \label{fig:modelstrip}
+\end{figure*}
 
 \begin{figure*}[t]
   \centering
@@ -136,7 +149,10 @@ no identity scores; they are counted, not hidden, in Table~\ref{tab:main}.
   \centering
   \includegraphics[width=0.88\textwidth]{qualitative_grid.png}
   \caption{Qualitative results (top to bottom: two deep-plane-facelift faces, one
-  frontal rhinoplasty face). Prompt-only edits alter the whole image; composited
-  edits are pixel-identical to the input outside the region.}
+  frontal rhinoplasty face). Prompt-only edits alter the whole image; in the
+  bottom row the prompt-only editor even rewrote the source photograph's
+  ``BEFORE'' watermark to ``AFTER.'' Composited edits are pixel-identical to the
+  input outside the region. The top row's inpaint panel shows the identity
+  damage quantified in Sec.~\ref{sec:inpaint}.}
   \label{fig:grid}
 \end{figure*}

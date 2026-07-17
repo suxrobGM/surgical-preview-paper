@@ -20,11 +20,19 @@ class Stem:
 # Teaser (Fig. 1): same face under prompt_only and masked_composite, gpt_image_2.
 TEASER_FACE = Stem("real_01", "deep_plane_facelift", verified=True)
 
-# Qualitative grid (Fig. 5): one row per procedure/model contrast.
+# Qualitative grid: one row per procedure/control contrast. Faces must be in the
+# registered matrix runs (facelift real_01-08; rhino real_01-04 + *_front).
 GRID_FACES = [
     Stem("real_07", "deep_plane_facelift", verified=True),
-    Stem("real_09", "deep_plane_facelift", verified=True),
+    Stem("real_06", "deep_plane_facelift", verified=True),
     Stem("real_06_front", "rhinoplasty", verified=True),
+]
+
+# Model-comparison strip: the same face composited by all six editors.
+STRIP_FACE = Stem("real_02", "deep_plane_facelift", verified=True)
+STRIP_MODELS = [
+    "gpt_image_2", "gpt_image_2_low", "nano_banana_pro",
+    "nano_banana_2", "seedream_5_0", "flux_2_pro",
 ]
 
 # Method figure (Fig. 2): the chained run's stage1 intermediates (real_12).

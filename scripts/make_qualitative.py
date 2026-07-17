@@ -10,11 +10,10 @@ from pathlib import Path
 import pandas as pd
 from PIL import Image, ImageDraw, ImageFont
 
-from config import DATA_DIR, FIGURES_DIR, POC_ROOT
-from figure_stems import GRID_FACES, TEASER_FACE
+from config import DATA_DIR, FIGURES_DIR, MODEL_NAMES, POC_ROOT
+from figure_stems import GRID_FACES, STRIP_FACE, STRIP_MODELS, TEASER_FACE
 
 PANEL = 384      # px per face panel
-LABEL_H = 26
 RUNS = POC_ROOT / "outputs" / "runs"
 
 
@@ -35,18 +34,19 @@ def input_for(face_id: str, procedure: str) -> Path:
     return POC_ROOT / "data" / "faces" / procedure / f"{face_id}.png"
 
 
-def panel(img_path: Path, label: str) -> Image.Image:
+def panel(img_path: Path, label: str, label_size: int = 16) -> Image.Image:
     img = Image.open(img_path).convert("RGB")
     img.thumbnail((PANEL, PANEL))
-    canvas = Image.new("RGB", (PANEL, PANEL + LABEL_H), "white")
+    label_h = label_size + 12
+    canvas = Image.new("RGB", (PANEL, PANEL + label_h), "white")
     canvas.paste(img, ((PANEL - img.width) // 2, 0))
     draw = ImageDraw.Draw(canvas)
     try:
-        font = ImageFont.truetype("arial.ttf", 16)
+        font = ImageFont.truetype("arial.ttf", label_size)
     except OSError:
         font = ImageFont.load_default()
     w = draw.textlength(label, font=font)
-    draw.text(((PANEL - w) // 2, PANEL + 4), label, fill="#0b0b0b", font=font)
+    draw.text(((PANEL - w) // 2, PANEL + 5), label, fill="#0b0b0b", font=font)
     return canvas
 
 
@@ -93,6 +93,8 @@ def make_grid(df: pd.DataFrame) -> bool:
                 panels.append(panel(image_for(r), control.replace("_", " ").capitalize()))
         if len(panels) > 1:
             rows.append(hstack(panels))
+        else:
+            print(f"grid: {s.face_id}/{s.procedure} has no rows in the canonical set - skipped")
     if not rows:
         return False
     w = max(r.width for r in rows)
@@ -106,10 +108,30 @@ def make_grid(df: pd.DataFrame) -> bool:
     return True
 
 
+def make_model_strip(df: pd.DataFrame) -> bool:
+    """The same face composited by every editor: the model-comparison figure."""
+    s = STRIP_FACE
+    if not s.verified:
+        print(f"strip: {s.face_id} not license-verified - skipped")
+        return False
+    panels = [panel(input_for(s.face_id, s.procedure), "Input", label_size=36)]
+    for model in STRIP_MODELS:
+        g = df[(df.face_id == s.face_id) & (df.procedure == s.procedure)
+               & (df.control == "masked_composite") & (df.model == model)]
+        if g.empty or not image_for(g.iloc[0]).exists():
+            print(f"strip: no composited {model} edit for {s.face_id} - skipped")
+            continue
+        panels.append(panel(image_for(g.iloc[0]), MODEL_NAMES.get(model, model), label_size=36))
+    if len(panels) < 3:
+        return False
+    hstack(panels).save(FIGURES_DIR / "model_strip.png")
+    return True
+
+
 def main() -> None:
     FIGURES_DIR.mkdir(parents=True, exist_ok=True)
     df = load_rows()
-    made = [make_teaser(df), make_grid(df)]
+    made = [make_teaser(df), make_grid(df), make_model_strip(df)]
     if not any(made):
         print("no qualitative figures generated - real-face gate is closed "
               "(see docs/real_face_checklist.md)")
