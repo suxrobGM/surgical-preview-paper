@@ -1,63 +1,131 @@
-% Seed entries: well-known staples. Expanded and verified during the novelty scan
-% and Session 4 bibliography pass (target ~40 refs across 7 clusters).
+% Bibliography. Entries marked % UNVERIFIED need a publisher-page check in Session 4.
+% Clusters: surgical simulation / clinical motivation / training-free localized editing /
+% editing benchmarks / models under test / face analysis + metrics / ethics.
 
-@inproceedings{deng2019arcface,
-  author    = {Deng, Jiankang and Guo, Jia and Xue, Niannan and Zafeiriou, Stefanos},
-  title     = {ArcFace: Additive Angular Margin Loss for Deep Face Recognition},
-  booktitle = {Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)},
-  year      = {2019},
-  pages     = {4690--4699}
+% ============ Surgical simulation ============
+@article{knoedler2024rhinoplastygan,
+  author  = {Knoedler, Samuel and Alfertshofer, Michael and Simon, Sina and others},
+  title   = {Turn Your Vision into Reality---{AI}-Powered Pre-operative Outcome Simulation in Rhinoplasty Surgery},
+  journal = {Aesthetic Plastic Surgery},
+  volume  = {48},
+  pages   = {4833--4838},
+  year    = {2024},
+  doi     = {10.1007/s00266-024-04043-9}
 }
 
-@article{guo2021scrfd,
-  author  = {Guo, Jia and Deng, Jiankang and Lattas, Alexandros and Zafeiriou, Stefanos},
-  title   = {Sample and Computation Redistribution for Efficient Face Detection},
-  journal = {arXiv preprint arXiv:2105.04714},
-  year    = {2021}
+@misc{agarwal2026envisage,
+  author        = {Agarwal, Mudit and Bhrany, Amit D.},
+  title         = {Envisage: Diffusion-Based Rhinoplasty Goal Visualization with Mask-Decomposed Evaluation},
+  year          = {2026},
+  eprint        = {2606.28628},
+  archivePrefix = {arXiv},
+  primaryClass  = {eess.IV},
+  note          = {arXiv preprint, submitted June 26, 2026}
 }
 
-@article{lugaresi2019mediapipe,
-  author  = {Lugaresi, Camillo and Tang, Jiuqiang and Nash, Hadon and McClanahan, Chris and Uboweja, Esha and Hays, Michael and Zhang, Fan and Chang, Chuo-Ling and Yong, Ming Guang and Lee, Juhyun and Chang, Wan-Teh and Hua, Wei and Georg, Manfred and Grundmann, Matthias},
-  title   = {MediaPipe: A Framework for Building Perception Pipelines},
-  journal = {arXiv preprint arXiv:1906.08172},
-  year    = {2019}
+@article{huang2024ptosisdiffusion,
+  author  = {Huang, Shaodi and Xie, Juan and Yang, Bo and Gao, Qi and Ye, Juan},
+  title   = {{PtosisDiffusion}: a training-free workflow for precisely predicting post-operative appearance in blepharoptosis patients based on diffusion models},
+  journal = {Frontiers in Cell and Developmental Biology},
+  volume  = {12},
+  pages   = {1459336},
+  year    = {2024},
+  doi     = {10.3389/fcell.2024.1459336}
+}
+% ^ author given names UNVERIFIED beyond surname/initial
+
+% UNVERIFIED: authors UNVERIFIED
+@article{blepharoptosis2022poap,
+  title   = {A Fully Automatic Postoperative Appearance Prediction System for Blepharoptosis Surgery with Image-based Deep Learning},
+  journal = {Ophthalmology Science},
+  volume  = {2},
+  number  = {4},
+  year    = {2022},
+  note    = {PMID 36245755}
 }
 
-@inproceedings{brooks2023instructpix2pix,
-  author    = {Brooks, Tim and Holynski, Aleksander and Efros, Alexei A.},
-  title     = {InstructPix2Pix: Learning to Follow Image Editing Instructions},
-  booktitle = {Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)},
-  year      = {2023},
-  pages     = {18392--18402}
+@article{lim2023generativecosmetic,
+  author  = {Lim, Bryan and Seth, Ishith and Kah, Sally and Sofiadellis, Foti and Ross, Richard J. and Rozen, Warren M. and Cuomo, Roberto},
+  title   = {Using Generative Artificial Intelligence Tools in Cosmetic Surgery: A Study on Rhinoplasty, Facelifts, and Blepharoplasty Procedures},
+  journal = {Journal of Clinical Medicine},
+  volume  = {12},
+  number  = {20},
+  pages   = {6524},
+  year    = {2023},
+  doi     = {10.3390/jcm12206524}
 }
 
-@inproceedings{rombach2022ldm,
-  author    = {Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj{\"o}rn},
-  title     = {High-Resolution Image Synthesis with Latent Diffusion Models},
-  booktitle = {Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)},
+@inproceedings{fang2022acmtnet,
+  author    = {Fang, Xi and others},
+  title     = {Deep Learning-Based Facial Appearance Simulation Driven by Surgically Planned Craniomaxillofacial Bony Movement},
+  booktitle = {Medical Image Computing and Computer Assisted Intervention (MICCAI)},
   year      = {2022},
-  pages     = {10684--10695}
+  note      = {arXiv:2210.01685}
 }
 
-@inproceedings{zhang2023magicbrush,
-  author    = {Zhang, Kai and Mo, Lingbo and Chen, Wenhu and Sun, Huan and Su, Yu},
-  title     = {MagicBrush: A Manually Annotated Dataset for Instruction-Guided Image Editing},
-  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
-  year      = {2023}
+% ============ Clinical simulation / expectation management ============
+@article{yamamichi2025crisalix,
+  author  = {Yamamichi, Keisuke and Nakanishi, Yusuke and Chen, Chien-Yu},
+  title   = {Three-Dimensional Simulation Accuracy and Patient Satisfaction With Rhinoplasty},
+  journal = {Aesthetic Surgery Journal Open Forum},
+  volume  = {7},
+  pages   = {ojaf110},
+  year    = {2025},
+  doi     = {10.1093/asjof/ojaf110}
+}
+% ^ author given names UNVERIFIED beyond surname
+
+% UNVERIFIED: authors UNVERIFIED
+@article{threedvr2026aesthetic,
+  title   = {The impact of three-dimensional simulation and virtual reality technologies on surgical decision-making and postoperative satisfaction in aesthetic surgery: a preliminary study},
+  journal = {Computer Assisted Surgery},
+  year    = {2026},
+  doi     = {10.1080/24699322.2026.2614532}
 }
 
+@article{agarwal2007morph,
+  author  = {Agarwal, Anurag and Gracely, Edward and Silver, William E.},
+  title   = {Realistic Expectations: To Morph or Not to Morph?},
+  journal = {Plastic and Reconstructive Surgery},
+  volume  = {119},
+  number  = {4},
+  pages   = {1343--1351},
+  year    = {2007}
+}
+
+@article{sharp2002computerimaging,
+  author  = {Sharp, H. R. and Tingay, R. S. and Coman, S. and Mills, V. and Roberts, D. N.},
+  title   = {Computer imaging and patient satisfaction in rhinoplasty surgery},
+  journal = {The Journal of Laryngology \& Otology},
+  volume  = {116},
+  number  = {12},
+  pages   = {1009--1013},
+  year    = {2002}
+}
+
+@article{stephanian2024fpsamreview,
+  author  = {Stephanian, Brooke and Karki, Sabin and Debnath, Kirin and Saltychev, Mikhail and Rossi-Meyer, Monica and Kandathil, Cherian Kurian and Most, Sam P.},
+  title   = {Role of Artificial Intelligence and Machine Learning in Facial Aesthetic Surgery: A Systematic Review},
+  journal = {Facial Plastic Surgery \& Aesthetic Medicine},
+  year    = {2024},
+  doi     = {10.1089/fpsam.2024.0204}
+}
+
+% ============ Training-free localized editing ============
 @inproceedings{meng2022sdedit,
   author    = {Meng, Chenlin and He, Yutong and Song, Yang and Song, Jiaming and Wu, Jiajun and Zhu, Jun-Yan and Ermon, Stefano},
-  title     = {SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations},
-  booktitle = {Proc. Int. Conf. Learning Representations (ICLR)},
-  year      = {2022}
+  title     = {{SDEdit}: Guided Image Synthesis and Editing with Stochastic Differential Equations},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022},
+  note      = {arXiv:2108.01073}
 }
 
-@inproceedings{couairon2023diffedit,
-  author    = {Couairon, Guillaume and Verbeek, Jakob and Schwenk, Holger and Cord, Matthieu},
-  title     = {DiffEdit: Diffusion-Based Semantic Image Editing with Mask Guidance},
-  booktitle = {Proc. Int. Conf. Learning Representations (ICLR)},
-  year      = {2023}
+@inproceedings{avrahami2022blended,
+  author    = {Avrahami, Omri and Lischinski, Dani and Fried, Ohad},
+  title     = {Blended Diffusion for Text-driven Editing of Natural Images},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2022},
+  note      = {arXiv:2111.14818}
 }
 
 @article{avrahami2023blendedlatent,
@@ -66,54 +134,298 @@
   journal = {ACM Transactions on Graphics},
   volume  = {42},
   number  = {4},
-  year    = {2023}
+  year    = {2023},
+  note    = {SIGGRAPH 2023; arXiv:2206.02779}
 }
 
 @inproceedings{lugmayr2022repaint,
-  author    = {Lugmayr, Andreas and Danelljan, Martin and Romero, Andr{\'e}s and Yu, Fisher and Timofte, Radu and Van Gool, Luc},
-  title     = {RePaint: Inpainting Using Denoising Diffusion Probabilistic Models},
-  booktitle = {Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)},
+  author    = {Lugmayr, Andreas and Danelljan, Martin and Romero, Andres and Yu, Fisher and Timofte, Radu and Van Gool, Luc},
+  title     = {{RePaint}: Inpainting using Denoising Diffusion Probabilistic Models},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
   year      = {2022},
-  pages     = {11461--11471}
+  note      = {arXiv:2201.09865}
 }
 
-@inproceedings{buolamwini2018gendershades,
-  author    = {Buolamwini, Joy and Gebru, Timnit},
-  title     = {Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification},
-  booktitle = {Proc. Conf. Fairness, Accountability and Transparency (FAT*)},
-  year      = {2018},
-  pages     = {77--91}
+@inproceedings{couairon2023diffedit,
+  author    = {Couairon, Guillaume and Verbeek, Jakob and Schwenk, Holger and Cord, Matthieu},
+  title     = {{DiffEdit}: Diffusion-based Semantic Image Editing with Mask Guidance},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+  note      = {arXiv:2210.11427}
 }
 
-@inproceedings{mitchell2019modelcards,
-  author    = {Mitchell, Margaret and Wu, Simone and Zaldivar, Andrew and Barnes, Parker and Vasserman, Lucy and Hutchinson, Ben and Spitzer, Elena and Raji, Inioluwa Deborah and Gebru, Timnit},
-  title     = {Model Cards for Model Reporting},
-  booktitle = {Proc. Conf. Fairness, Accountability, and Transparency (FAT*)},
+@inproceedings{hertz2023prompt2prompt,
+  author    = {Hertz, Amir and Mokady, Ron and Tenenbaum, Jay and Aberman, Kfir and Pritch, Yael and Cohen-Or, Daniel},
+  title     = {Prompt-to-Prompt Image Editing with Cross-Attention Control},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+  note      = {arXiv:2208.01626}
+}
+
+@inproceedings{tumanyan2023plugandplay,
+  author    = {Tumanyan, Narek and Geyer, Michal and Bagon, Shai and Dekel, Tali},
+  title     = {Plug-and-Play Diffusion Features for Text-Driven Image-to-Image Translation},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2023},
+  note      = {arXiv:2211.12572}
+}
+
+% ============ Editing benchmarks ============
+@inproceedings{zhang2023magicbrush,
+  author    = {Zhang, Kai and Mo, Lingbo and Chen, Wenhu and Sun, Huan and Su, Yu},
+  title     = {{MagicBrush}: A Manually Annotated Dataset for Instruction-Guided Image Editing},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS) Datasets and Benchmarks},
+  year      = {2023},
+  note      = {arXiv:2306.10012}
+}
+
+@inproceedings{wang2023editbench,
+  author    = {Wang, Su and Saharia, Chitwan and Montgomery, Ceslee and others},
+  title     = {Imagen Editor and {EditBench}: Advancing and Evaluating Text-Guided Image Inpainting},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2023},
+  note      = {arXiv:2212.06909}
+}
+
+@inproceedings{sheynin2024emuedit,
+  author    = {Sheynin, Shelly and Polyak, Adam and Singer, Uriel and others},
+  title     = {Emu Edit: Precise Image Editing via Recognition and Generation Tasks},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {8871--8879},
+  year      = {2024},
+  note      = {arXiv:2311.10089}
+}
+
+@inproceedings{ku2024imagenhub,
+  author    = {Ku, Max and Li, Tianle and Zhang, Kai and others},
+  title     = {{ImagenHub}: Standardizing the Evaluation of Conditional Image Generation Models},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024},
+  note      = {arXiv:2310.01596}
+}
+
+@inproceedings{ma2024i2ebench,
+  author    = {Ma, Yiwei and others},
+  title     = {{I2EBench}: A Comprehensive Benchmark for Instruction-based Image Editing},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2024},
+  note      = {arXiv:2408.14180}
+}
+
+@inproceedings{hui2025hqedit,
+  author    = {Hui, Mude and others},
+  title     = {{HQ-Edit}: A High-Quality Dataset for Instruction-based Image Editing},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2025},
+  note      = {arXiv:2404.09990}
+}
+
+% UNVERIFIED: UNVERIFIED details
+@misc{liu2025step1xedit,
+  author        = {Liu, Shiyu and others},
+  title         = {{Step1X-Edit}: A Practical Framework for General Image Editing},
+  year          = {2025},
+  eprint        = {2504.17761},
+  archivePrefix = {arXiv},
+  note          = {Introduces GEdit-Bench}
+}
+
+@misc{qian2025giebench,
+  author        = {Qian, Yusu and Lu, Jiasen and Fu, Tsu-Jui and Wang, Xinze and Chen, Chen and Yang, Yinfei and Hu, Wenze and Gan, Zhe},
+  title         = {{GIE-Bench}: Towards Grounded Evaluation for Text-Guided Image Editing},
+  year          = {2025},
+  eprint        = {2505.11493},
+  archivePrefix = {arXiv}
+}
+
+% UNVERIFIED: authors UNVERIFIED
+@misc{gptimgeval2025,
+  title         = {{GPT-ImgEval}: A Comprehensive Benchmark for Diagnosing {GPT-4o} in Image Generation},
+  year          = {2025},
+  eprint        = {2504.02782},
+  archivePrefix = {arXiv}
+}
+
+% UNVERIFIED: title variant / venue UNVERIFIED
+@misc{alebench2024,
+  title         = {Addressing Attribute Leakage in Diffusion-based Image Editing without Training},
+  year          = {2024},
+  eprint        = {2412.04715},
+  archivePrefix = {arXiv},
+  note          = {Introduces ALE-Bench target-external/internal leakage metrics}
+}
+
+% ============ Models under test ============
+@misc{openai2026gptimage2,
+  author       = {{OpenAI}},
+  title        = {{GPT Image 2}},
+  year         = {2026},
+  howpublished = {\url{https://developers.openai.com/api/docs/models/gpt-image-2}},
+  note         = {API model documentation; released April 21, 2026}
+}
+
+% UNVERIFIED: exact date UNVERIFIED
+@misc{openai2025gptimage1,
+  author       = {{OpenAI}},
+  title        = {Introducing our latest image generation model in the {API} ({gpt-image-1})},
+  year         = {2025},
+  howpublished = {\url{https://openai.com/index/image-generation-api/}},
+  note         = {Announcement and system-card addendum, April 2025}
+}
+
+@misc{google2025nanobanana,
+  author       = {{Google DeepMind}},
+  title        = {Introducing {Gemini 2.5 Flash Image} ({Nano Banana})},
+  year         = {2025},
+  howpublished = {\url{https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image/}},
+  note         = {Developer blog announcement, August 2025}
+}
+
+@misc{google2025nanobananapro,
+  author       = {{Google DeepMind}},
+  title        = {{Nano Banana Pro}: {Gemini 3 Pro Image} model},
+  year         = {2025},
+  howpublished = {\url{https://blog.google/technology/ai/nano-banana-pro/}},
+  note         = {Announced November 20, 2025}
+}
+
+@misc{gao2025seedream3,
+  author        = {{ByteDance Seed}},
+  title         = {Seedream 3.0 Technical Report},
+  year          = {2025},
+  eprint        = {2504.11346},
+  archivePrefix = {arXiv}
+}
+
+@misc{seedream4_2025,
+  author        = {{ByteDance Seed}},
+  title         = {Seedream 4.0: Toward Next-generation Multimodal Image Generation},
+  year          = {2025},
+  eprint        = {2509.20427},
+  archivePrefix = {arXiv}
+}
+
+@misc{seedream5_2026,
+  author       = {{ByteDance Seed}},
+  title        = {Beyond Generation, It Understands Design: Introducing {Seedream 5.0 Pro}},
+  year         = {2026},
+  howpublished = {\url{https://seed.bytedance.com/en/blog/beyond-generation-it-understands-design-introducing-seedream-5-0-pro}},
+  note         = {Blog announcement, July 8, 2026; no technical report at time of writing}
+}
+
+@misc{wu2025qwenimage,
+  author        = {{Qwen Team}},
+  title         = {Qwen-Image Technical Report},
+  year          = {2025},
+  eprint        = {2508.02324},
+  archivePrefix = {arXiv},
+  note          = {Covers Qwen-Image and Qwen-Image-Edit}
+}
+
+@misc{bfl2024flux,
+  author       = {{Black Forest Labs}},
+  title        = {Announcing {Black Forest Labs} and the {FLUX.1} model suite},
+  year         = {2024},
+  howpublished = {\url{https://bfl.ai/announcing-black-forest-labs/}},
+  note         = {August 1, 2024}
+}
+
+@misc{bfl2025fluxkontext,
+  author        = {{Black Forest Labs}},
+  title         = {{FLUX.1 Kontext}: Flow Matching for In-Context Image Generation and Editing in Latent Space},
+  year          = {2025},
+  eprint        = {2506.15742},
+  archivePrefix = {arXiv}
+}
+
+@inproceedings{brooks2023instructpix2pix,
+  author    = {Brooks, Tim and Holynski, Aleksander and Efros, Alexei A.},
+  title     = {{InstructPix2Pix}: Learning to Follow Image Editing Instructions},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2023},
+  note      = {arXiv:2211.09800}
+}
+
+@inproceedings{rombach2022ldm,
+  author    = {Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj{\"o}rn},
+  title     = {High-Resolution Image Synthesis with Latent Diffusion Models},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {10684--10695},
+  year      = {2022},
+  note      = {arXiv:2112.10752}
+}
+
+% ============ Face analysis / metrics ============
+@inproceedings{deng2019arcface,
+  author    = {Deng, Jiankang and Guo, Jia and Xue, Niannan and Zafeiriou, Stefanos},
+  title     = {{ArcFace}: Additive Angular Margin Loss for Deep Face Recognition},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {4690--4699},
   year      = {2019},
-  pages     = {220--229}
+  note      = {arXiv:1801.07698}
 }
 
-@article{sharma2005ciede2000,
-  author  = {Sharma, Gaurav and Wu, Wencheng and Dalal, Edul N.},
-  title   = {The {CIEDE2000} Color-Difference Formula: Implementation Notes, Supplementary Test Data, and Mathematical Observations},
-  journal = {Color Research \& Application},
-  volume  = {30},
-  number  = {1},
-  pages   = {21--30},
-  year    = {2005}
+@inproceedings{guo2022scrfd,
+  author    = {Guo, Jia and Deng, Jiankang and Lattas, Alexandros and Zafeiriou, Stefanos},
+  title     = {Sample and Computation Redistribution for Efficient Face Detection},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022},
+  note      = {arXiv:2105.04714}
+}
+
+@misc{lugaresi2019mediapipe,
+  author        = {Lugaresi, Camillo and Tang, Jiuqiang and Nash, Hadon and others},
+  title         = {{MediaPipe}: A Framework for Building Perception Pipelines},
+  year          = {2019},
+  eprint        = {1906.08172},
+  archivePrefix = {arXiv}
+}
+
+@misc{grishchenko2020attentionmesh,
+  author        = {Grishchenko, Ivan and Ablavatski, Artsiom and Kartynnik, Yury and Raveendran, Karthik and Grundmann, Matthias},
+  title         = {Attention Mesh: High-fidelity Face Mesh Prediction in Real-time},
+  year          = {2020},
+  eprint        = {2006.10962},
+  archivePrefix = {arXiv},
+  note          = {CVPR Workshop on Computer Vision for AR/VR}
 }
 
 @inproceedings{zhang2018lpips,
   author    = {Zhang, Richard and Isola, Phillip and Efros, Alexei A. and Shechtman, Eli and Wang, Oliver},
   title     = {The Unreasonable Effectiveness of Deep Features as a Perceptual Metric},
-  booktitle = {Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)},
+  booktitle = {IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {586--595},
   year      = {2018},
-  pages     = {586--595}
+  note      = {arXiv:1801.03924}
 }
 
-@article{wu2025qwenimage,
-  author  = {{Qwen Team}},
-  title   = {Qwen-Image Technical Report},
-  journal = {arXiv preprint arXiv:2508.02324},
-  year    = {2025}
+@article{sharma2005ciede2000,
+  author  = {Sharma, Gaurav and Wu, Wencheng and Dalal, Edul N.},
+  title   = {The {CIEDE2000} color-difference formula: Implementation notes, supplementary test data, and mathematical observations},
+  journal = {Color Research \& Application},
+  volume  = {30},
+  number  = {1},
+  pages   = {21--30},
+  year    = {2005},
+  doi     = {10.1002/col.20070}
+}
+
+% ============ Ethics / fairness ============
+@inproceedings{buolamwini2018gendershades,
+  author    = {Buolamwini, Joy and Gebru, Timnit},
+  title     = {Gender Shades: Intersectional Accuracy Disparities in Commercial Gender Classification},
+  booktitle = {Conference on Fairness, Accountability and Transparency (FAccT)},
+  series    = {PMLR},
+  volume    = {81},
+  pages     = {77--91},
+  year      = {2018}
+}
+
+@inproceedings{mitchell2019modelcards,
+  author    = {Mitchell, Margaret and Wu, Simone and Zaldivar, Andrew and Barnes, Parker and Vasserman, Lucy and Hutchinson, Ben and Spitzer, Elena and Raji, Inioluwa Deborah and Gebru, Timnit},
+  title     = {Model Cards for Model Reporting},
+  booktitle = {Conference on Fairness, Accountability, and Transparency (FAT*)},
+  pages     = {220--229},
+  year      = {2019},
+  note      = {arXiv:1810.03993}
 }
