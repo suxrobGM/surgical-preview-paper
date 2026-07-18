@@ -17,8 +17,9 @@
   \includegraphics[width=\columnwidth]{scatter_identity_localization}
   \caption{Every scored edit, placed by the two failure modes. Masked compositing
   pins localization near 1 across models; prompt-only edits and the hosted
-  inpainter leak roughly half their change off-target. All edits clear the
-  identity floor.}
+  inpainter leak roughly half their change off-target. \NumBelowFloor{} of
+  \NumScoredEdits{} edits fall below the identity floor, \NumBelowFloorFlux{} of
+  them from FLUX.2~[pro] (Sec.~\ref{sec:identity}).}
   \label{fig:scatter}
 \end{figure}
 
@@ -42,6 +43,7 @@ guardrails alone, however carefully worded, did not confine any model's edit;
 moving the confinement outside the model did, uniformly.
 
 \subsection{Identity}
+\label{sec:identity}
 
 With six editors in the matrix the identity floor becomes a discriminating bar
 rather than a formality. \NumBelowFloor{} of \NumScoredEdits{} edits fall below
@@ -66,7 +68,7 @@ output quality.
   \centering
   \includegraphics[width=0.99\textwidth]{model_strip.png}
   \caption{One deep-plane-facelift face composited through every editor in the
-  study. The aggressiveness spectrum of Sec.~\ref{sec:results}-B is visible
+  study. The aggressiveness spectrum of Sec.~\ref{sec:identity} is visible
   directly: the Nano Banana models barely operate, GPT Image~2 and Seedream
   reposition the jawline and neck, and FLUX.2 alters enough of the face to
   strain identity even inside the mask.}
@@ -79,7 +81,7 @@ output quality.
   \caption{(a) Localization by control rung, models pooled. (b) Identity by
   model, controls pooled; the dashed line is the acceptance floor. FLUX.2's low,
   wide distribution in (b) is the aggressiveness trade of
-  Sec.~\ref{sec:results}-B; the inpainter's spread reflects its per-procedure
+  Sec.~\ref{sec:identity}; the inpainter's spread reflects its per-procedure
   split (Sec.~\ref{sec:inpaint}).}
   \label{fig:boxes}
 \end{figure*}
@@ -109,7 +111,12 @@ Against real post-operative photographs the edits score a median cosine of
 Fig.~\ref{fig:gt}. The values sit where same-person photographs taken months apart
 under different pose, makeup, and hair typically land, which is all this check can
 certify: the previews are not drifting toward a different person than the one the
-surgery actually produced.
+surgery actually produced. Fig.~\ref{fig:profiles} makes the comparison concrete
+on the profile views, placing two rhinoplasty inputs beside a model's edit and
+the photograph of the real surgical outcome; these are the pose-gated inputs for
+which the edit ships uncomposited and the regional metric abstains
+(Sec.~\ref{sec:protocol}), so this side-by-side and the cosines behind it are the
+evidence the protocol retains for them.
 
 \begin{figure}[t]
   \centering
@@ -118,6 +125,17 @@ surgery actually produced.
   photograph (bars: medians). A soft sanity check; session differences cap the
   achievable score.}
   \label{fig:gt}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{profile_rhino_gt.png}
+  \caption{Profile rhinoplasty previews against the real outcome (rows: two
+  faces; columns: input, GPT Image~2 prompt-only edit, real post-operative
+  photograph). Profile views exceed the pose gate, so the edit is the model's
+  raw output, and the frontal-mesh regional metric abstains; identity and
+  ground-truth cosines are the scores these cells contribute.}
+  \label{fig:profiles}
 \end{figure}
 
 \subsection{Chained procedures}
@@ -131,6 +149,7 @@ appears to be a free parameter, though two probes on one face only establish
 feasibility.
 
 \subsection{Qualitative results and failure modes}
+\label{sec:failures}
 
 Fig.~\ref{fig:teaser} and Fig.~\ref{fig:grid} show representative edits. The
 facelift examples display the intended tissue repositioning (jawline definition,
@@ -141,9 +160,11 @@ mask on the cheek and composited a translucent copy of the nose into it; gating
 on yaw removed the artifact at the cost of leaving profile inputs uncomposited.
 The person swap: FLUX.2's strongest edits replace enough of the face to break
 identity, and compositing can only partially repair this because the damage is
-inside the mask. The detector abstention: on one extreme-profile input the identity model finds
-no face at all, so that face's twelve cells contribute ground-truth cosines but
-no identity scores; they are counted, not hidden, in Table~\ref{tab:main}.
+inside the mask. The detector abstention: on one extreme-profile rhinoplasty input the identity
+model finds no face in any edit, so none of that face's thirteen cells can be
+scored. Those cells are excluded from the scored set, which is why the
+rhinoplasty rows of Table~\ref{tab:main} count seven of the eight matrix faces
+(Sec.~\ref{sec:setup}).
 
 \begin{figure*}[t]
   \centering

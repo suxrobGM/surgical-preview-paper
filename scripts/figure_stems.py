@@ -35,5 +35,10 @@ STRIP_MODELS = [
     "nano_banana_2", "seedream_5_0", "flux_2_pro",
 ]
 
-# Method figure (Fig. 2): the chained run's stage1 intermediates (real_12).
-METHOD_FACE = Stem("real_12", "deep_plane_facelift", verified=True)
+# Profile rhinoplasty strip: input | edit | real post-op photograph. Profiles are
+# pose-gated (no compositing), so the edit shown is the model's raw output.
+PROFILE_RHINO_FACES = [
+    Stem("real_04", "rhinoplasty", verified=True),
+    Stem("real_02", "rhinoplasty", verified=True),
+]
+PROFILE_RHINO_MODEL = "gpt_image_2"

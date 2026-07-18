@@ -43,13 +43,18 @@ rebuilding produces byte-identical files and `git status` stays clean.
 
 ## make_qualitative.py and figure_stems.py
 
-Builds the before/after image grids from the run outputs. Which faces appear is
-controlled by `figure_stems.py`, and each face carries a `verified` flag tied
-to the license checklist in `docs/real_face_checklist.md` - a face whose source
-hasn't cleared the checklist simply doesn't show up in the figures.
+Builds the before/after image grids from the run outputs: the teaser triptych,
+the qualitative grid, the six-editor model strip, and the profile-rhinoplasty
+strip that places each input beside a model's edit and the real post-operative
+photograph. Which faces appear is controlled by `figure_stems.py`, and each
+face carries a `verified` flag tied to the license checklist in
+`docs/real_face_checklist.md` - a face whose source hasn't cleared the
+checklist simply doesn't show up in the figures.
 
 ## check_citations.py
 
 Sanity check for the bibliography: compares refs.bib against what the compiled
 paper actually cites and renders, and lists any dead entries or missing keys.
-Run it after touching refs.bib or any `\cite`; all three counts should match.
+Run it with `make check` (part of `make all`, after the PDF exists) or after
+touching refs.bib or any `\cite`; all three counts should match, and the
+script exits nonzero if they don't.

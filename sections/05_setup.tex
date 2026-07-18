@@ -14,7 +14,7 @@
 Nano Banana~Pro and Nano
 Banana~2~\cite{google2025nanobananapro,google2025nanobanana}, ByteDance
 Seedream~5.0~\cite{seedream5_2026,seedream4_2025}, and
-FLUX.2~[pro]~\cite{bfl2025fluxkontext}), plus Qwen-Image-Edit as a hosted
+FLUX.2~[pro]~\cite{bfl2025flux2,bfl2025fluxkontext}), plus Qwen-Image-Edit as a hosted
 inpainting endpoint for the masked-inpaint rung~\cite{wu2025qwenimage}. Hosted
 models are moving targets, so every run records its date and the exact endpoint
 identifier.
@@ -25,6 +25,12 @@ photograph) and 14 rhinoplasty inputs (10 profile views and 4 frontal
 cross-views, all paired). The benchmark matrix uses 8 facelift faces and 8
 rhinoplasty faces (the 4 frontal cross-views, which the regional metric can
 score, plus 4 profiles that contribute identity and ground-truth evidence).
+Faces are drawn independently per procedure; no person appears in both sets.
+One extreme-profile rhinoplasty face defeats the identity detector on every
+edit (Sec.~\ref{sec:failures}), so its cells drop out of all statistics:
+with the chained-experiment face included, \NumFacesScored{} distinct faces
+contribute the scored edits, and the rhinoplasty rows of
+Table~\ref{tab:main} accordingly hold 7 faces rather than 8.
 Images are normalized to $1024^2$ with padding. The datasets are licensed for AI
 use and republication; no private patient data was used at any point. Synthetic
 candidate faces were piloted early in the project and abandoned for quality

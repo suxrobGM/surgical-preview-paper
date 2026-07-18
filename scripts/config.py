@@ -10,7 +10,6 @@ from pathlib import Path
 POC_ROOT = Path(os.environ.get("PLASTYVUE_POC", r"c:\Users\admin\source\repos\plastyvue-poc"))
 RUNS_DIR = POC_ROOT / "outputs" / "runs"
 MODEL_CONFIGS_DIR = POC_ROOT / "configs" / "models"
-MANIFEST = POC_ROOT / "data" / "manifest.csv"
 
 PAPER_ROOT = Path(__file__).resolve().parent.parent
 TABLES_DIR = PAPER_ROOT / "tables"
@@ -46,7 +45,6 @@ PROCEDURE_NAMES = {
     "deep_plane_facelift": "Deep plane facelift",
     "facelift": "Deep plane facelift",
     "rhinoplasty": "Rhinoplasty",
-    "blepharoplasty": "Blepharoplasty",
     "rhinoplasty_then_deep_plane_facelift": "Chained: rhino.\\ $\\to$ facelift",
     "deep_plane_facelift_then_rhinoplasty": "Chained: facelift $\\to$ rhino.",
 }

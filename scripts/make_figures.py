@@ -11,6 +11,7 @@ os.environ.setdefault("SOURCE_DATE_EPOCH", "0")  # reproducible PDF metadata
 
 import matplotlib.pyplot as plt
 import pandas as pd
+from matplotlib.axes import Axes
 
 from config import CONTROL_NAMES, DATA_DIR, FIGURES_DIR, MODEL_NAMES
 
@@ -52,7 +53,7 @@ plt.rcParams.update({
 })
 
 
-def style_axes(ax):
+def style_axes(ax: Axes) -> None:
     ax.spines[["top", "right"]].set_visible(False)
     ax.grid(True, axis="both", zorder=0)
     ax.set_axisbelow(True)
@@ -62,7 +63,8 @@ def fig_scatter(df: pd.DataFrame) -> None:
     """Identity vs localization: the two failure modes in one plot."""
     d = df.dropna(subset=["identity_cosine", "change_localization"])
     fig, ax = plt.subplots(figsize=(COL_W, 2.7))
-    for (control, model), g in d.groupby(["control", "model"]):
+    for key, g in d.groupby(["control", "model"]):
+        control, model = (str(k) for k in key)
         ax.scatter(
             g.change_localization, g.identity_cosine,
             s=22, marker=MODEL_MARKER.get(model, "o"),

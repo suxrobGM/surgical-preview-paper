@@ -1,8 +1,8 @@
 Hosted image-editing models can follow the instruction ``perform a deep plane
 facelift,'' but they edit the whole face, returning a beauty-filter rendition
 that misrepresents both the patient and the operation. We benchmark six
-off-the-shelf hosted editors (GPT Image~2 at two quality tiers, Nano Banana~Pro
-and~2, Seedream~5.0, FLUX.2~[pro]) on deep-plane-facelift and rhinoplasty
+configurations of five off-the-shelf hosted editors (GPT Image~2 at two quality
+tiers, Nano Banana~Pro and~2, Seedream~5.0, FLUX.2~[pro]) on deep-plane-facelift and rhinoplasty
 previews over real before/after photograph pairs, under a control ladder that
 requires no model access: prompt-only, a client-side masked composite built from
 facial landmarks, and native masked inpainting. An automated protocol scores

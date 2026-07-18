@@ -1,4 +1,4 @@
-% Bibliography. Entries marked % UNVERIFIED need a publisher-page check in Session 4.
+% Bibliography. All entries verified against publisher/arXiv pages on 2026-07-17.
 % Clusters: surgical simulation / clinical motivation / training-free localized editing /
 % editing benchmarks / models under test / face analysis + metrics / ethics.
 
@@ -24,7 +24,7 @@
 }
 
 @article{huang2024ptosisdiffusion,
-  author  = {Huang, Shaodi and Xie, Juan and Yang, Bo and Gao, Qi and Ye, Juan},
+  author  = {Huang, Shenyu and Xie, Jiajun and Yang, Boyuan and Gao, Qi and Ye, Juan},
   title   = {{PtosisDiffusion}: a training-free workflow for precisely predicting post-operative appearance in blepharoptosis patients based on diffusion models},
   journal = {Frontiers in Cell and Developmental Biology},
   volume  = {12},
@@ -32,16 +32,16 @@
   year    = {2024},
   doi     = {10.3389/fcell.2024.1459336}
 }
-% ^ author given names UNVERIFIED beyond surname/initial
 
-% UNVERIFIED: authors UNVERIFIED
 @article{blepharoptosis2022poap,
+  author  = {Sun, Yiming and Huang, Xingru and Zhang, Qianni and Lee, Sang Yeul and Wang, Yaqi and Jin, Kai and Lou, Lixia and Ye, Juan},
   title   = {A Fully Automatic Postoperative Appearance Prediction System for Blepharoptosis Surgery with Image-based Deep Learning},
   journal = {Ophthalmology Science},
   volume  = {2},
-  number  = {4},
+  number  = {3},
+  pages   = {100169},
   year    = {2022},
-  note    = {PMID 36245755}
+  doi     = {10.1016/j.xops.2022.100169}
 }
 
 @article{lim2023generativecosmetic,
@@ -65,7 +65,7 @@
 
 % ============ Clinical simulation / expectation management ============
 @article{yamamichi2025crisalix,
-  author  = {Yamamichi, Keisuke and Nakanishi, Yusuke and Chen, Chien-Yu},
+  author  = {Yamamichi, Kosaku and Nakanishi, Yuji and Chen, Chien Ying},
   title   = {Three-Dimensional Simulation Accuracy and Patient Satisfaction With Rhinoplasty},
   journal = {Aesthetic Surgery Journal Open Forum},
   volume  = {7},
@@ -73,12 +73,14 @@
   year    = {2025},
   doi     = {10.1093/asjof/ojaf110}
 }
-% ^ author given names UNVERIFIED beyond surname
 
-% UNVERIFIED: authors UNVERIFIED
 @article{threedvr2026aesthetic,
+  author  = {Ersan, Mert and Demirba{\c{s}}o{\u{g}}lu, Hasan and Kolcu, Beg{\"u}m and Y{\i}ld{\i}z, Hilal Ayb{\"u}ke},
   title   = {The impact of three-dimensional simulation and virtual reality technologies on surgical decision-making and postoperative satisfaction in aesthetic surgery: a preliminary study},
   journal = {Computer Assisted Surgery},
+  volume  = {31},
+  number  = {1},
+  pages   = {2614532},
   year    = {2026},
   doi     = {10.1080/24699322.2026.2614532}
 }
@@ -220,9 +222,8 @@
   note      = {arXiv:2404.09990}
 }
 
-% UNVERIFIED: UNVERIFIED details
 @misc{liu2025step1xedit,
-  author        = {Liu, Shiyu and others},
+  author        = {Liu, Shiyu and Han, Yucheng and Xing, Peng and others},
   title         = {{Step1X-Edit}: A Practical Framework for General Image Editing},
   year          = {2025},
   eprint        = {2504.17761},
@@ -238,21 +239,20 @@
   archivePrefix = {arXiv}
 }
 
-% UNVERIFIED: authors UNVERIFIED
 @misc{gptimgeval2025,
-  title         = {{GPT-ImgEval}: A Comprehensive Benchmark for Diagnosing {GPT-4o} in Image Generation},
+  author        = {Yan, Zhiyuan and Ye, Junyan and Li, Weijia and Huang, Zilong and Yuan, Shenghai and He, Xiangyang and Lin, Kaiqing and He, Jun and He, Conghui and Yuan, Li},
+  title         = {{GPT-ImgEval}: A Comprehensive Benchmark for Diagnosing {GPT4o} in Image Generation},
   year          = {2025},
   eprint        = {2504.02782},
   archivePrefix = {arXiv}
 }
 
-% UNVERIFIED: title variant / venue UNVERIFIED
-@misc{alebench2024,
-  title         = {Addressing Attribute Leakage in Diffusion-based Image Editing without Training},
-  year          = {2024},
-  eprint        = {2412.04715},
-  archivePrefix = {arXiv},
-  note          = {Introduces ALE-Bench target-external/internal leakage metrics}
+@inproceedings{alebench2024,
+  author    = {Mun, Sunung and Nam, Jinhwan and Cho, Sunghyun and Ok, Jungseul},
+  title     = {Addressing Text Embedding Leakage in Diffusion-based Image Editing},
+  booktitle = {IEEE/CVF International Conference on Computer Vision (ICCV)},
+  year      = {2025},
+  note      = {arXiv:2412.04715; introduces the ALE-Bench attribute-leakage benchmark with target-external/internal leakage metrics}
 }
 
 % ============ Models under test ============
@@ -264,13 +264,12 @@
   note         = {API model documentation; released April 21, 2026}
 }
 
-% UNVERIFIED: exact date UNVERIFIED
 @misc{google2025nanobanana,
   author       = {{Google DeepMind}},
   title        = {Introducing {Gemini 2.5 Flash Image} ({Nano Banana})},
   year         = {2025},
   howpublished = {\url{https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image/}},
-  note         = {Developer blog announcement, August 2025}
+  note         = {Developer blog announcement, August 26, 2025}
 }
 
 @misc{google2025nanobananapro,
@@ -304,6 +303,14 @@
   eprint        = {2508.02324},
   archivePrefix = {arXiv},
   note          = {Covers Qwen-Image and Qwen-Image-Edit}
+}
+
+@misc{bfl2025flux2,
+  author       = {{Black Forest Labs}},
+  title        = {{FLUX.2}: Frontier Visual Intelligence},
+  year         = {2025},
+  howpublished = {\url{https://bfl.ai/blog/flux-2}},
+  note         = {Blog announcement, November 25, 2025; introduces FLUX.2 [pro]}
 }
 
 @misc{bfl2025fluxkontext,
